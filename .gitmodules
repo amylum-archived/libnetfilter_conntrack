@@ -1,0 +1,6 @@
+[submodule "upstream"]
+	path = upstream
+	url = https://git.netfilter.org/libnetfilter_conntrack
+[submodule "meta"]
+	path = meta
+	url = https://github.com/amylum/pkgforge-helper

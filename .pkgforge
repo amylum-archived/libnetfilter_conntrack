@@ -1,0 +1,37 @@
+name 'libnetfilter_conntrack'
+org 'amylum'
+
+licenses 'COPYING'
+
+deps(
+  libnfnetlink: {
+    version: '1.0.1-1',
+    checksum: 'bd2dce19114050ca3a93dc0fc9a4d9fb7238de3336027fd0a1d496fb9eda96ad'
+  },
+  libmnl: {
+    version: '1.0.4-25',
+    checksum: 'b923bb247733a67b32ca0000f551a76d90132cf2f4192744b9a07b4a7218a766'
+  },
+  'linux-api-headers': {
+    version: '4.20-1',
+    checksum: 'aed037b2b3fb2df77ca19359a20188d39c25d011febf4d3733d251fa87ca9636'
+  }
+)
+
+configure_flags(
+  prefix: '/usr',
+)
+
+cflags
+harden
+
+build do
+  run './autogen.sh'
+  configure
+  make
+  install
+end
+
+test do
+  # TODO: add tests
+end

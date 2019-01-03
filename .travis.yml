@@ -1,0 +1,20 @@
+sudo: required
+dist: trusty
+services:
+- docker
+env:
+  global:
+  - PKGFORGE_STATEFILE=/tmp/pkgforge
+  - secure: D9sAQB6X3/yd4BZ9Zh+Ayq/qzVYG5J1yV+JJXvtQj6xAs8965D9DPtrb4KUM5iEtfUx2KuWnxeL2rspReS425HaZ4YN4C3FVFCI2hp7Wm19JCHJqm4+oqRwlJh5KEiL5DlWRm1IAvjPnNMQvP4p/WnfH8C2H5cM3bdAduGga6Q+CMqciBCpH8BwMWVg8x4NklE83TKNzI/50Ju3INe1xfEAuE0TB7YOlfc07c6xiYoQL7lbpwZ2d3xhs7OCoQWIW2IgERuT9NkWWtmjFwWHRQ2e76FzUviB+ERHcZqiv45+nYJyrcdjq95sIZJ7VjxiALnSb5UCzNHm9T95wQEKmyO8lLJeA2dPB+2/Sno/jp7Cn7TuhXaFFZzuxEBf0I6mjp9Ny+0np+yj/bbi39izAJq62XuV+U9YaatiC2dux4o5IpkR1eN2XRLyoLKDhnyLpJumdw3ikM4PI93mMTA1EzA+/pp9Zen6epTQGF1i5B9CyB77H3B+NvTajdG3YSfK4Nh1DDkWNpywjtDq62V4NF0mkv9UETeXQ/rDhoxguVjrDWKON8wqL1pj5K79y3GilEki2WVZL/kRukiJbOPXga/byrd8mtC1msDeFWF/bJg/YuNDSjzp6Qd6LjPuq/MnkeTWGnoKxhX4pQwwVAc3mqW46dFVBSOyhgZ+nki0Yb8M=
+script: make
+deploy:
+  provider: script
+  script: make release || travis_terminate 1
+  skip_cleanup: true
+  on:
+    tags: true
+notifications:
+  email: false
+  slack:
+    rooms:
+      secure: ijbtXcIjkFaHWya2LqI8PW5EEkmMHwUCYn7nXKSiGY+cIFOJkdqX52Ej23bLo3UQCudif/oF0CxwdCxhtjYSQ4XQIXxUSk6FMqzBBoyf901kmbvk1v3sXI/Fvisuce4+IgHdTegoFqC9K+RK6cOzBsrXc47jVRYMzcTA+j68xXiuTkcxxEzMd86OrAaggwo9X+guTBU9hxnlEcJ57d2uk0oCktpekzIuy/XAD/OYdR+/GTHf9ZqNfoonfe1+sODEl4rMiO7VWy8ZCt7sMDS4RpFK24OW2uEoyhJ/3VeIMEzfY4JeLg8nKniaJY6clAeX5UhAa+Olq70hsecWsk12lxuhO/0a4tYmeNp14KjTm1pkl24alnmQ+cm/ykRvQVMFpbaLDwJGHCh1ri6Eoxb2khlFMrU+yy1GFYUZxP9TAZra2J/DWArafYidqVQuwfH1RLbCUtbk02d2F+UzMl/+Y9syB3GSeSlQgwHKdgGr1+Nt3KRQcTYuFRd0fKtJJZlKiYaokIw/9Rh39ywCpjKmA4eAcGfBovm6vzUH41TnZwNXPxdj8uHAEjg4OpjdU8vwk9txSZzbhiPXco6PvMFa/8UWnoDTl5+QWxBke0BbiIsfG3DbJcAkJx8hbxIWoICxAwVBwHudo58oLdEI14i5//mFFWVsitRLMHcyy7RqcGs=
